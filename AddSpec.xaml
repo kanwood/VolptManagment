@@ -1,0 +1,21 @@
+﻿<Window x:Class="VolptManagment.AddSpec"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VolptManagment"
+        mc:Ignorable="d"
+        Title="AddSpec" Height="600" Width="1000">
+    <Grid>
+        <Image Source="/Image1.png" Stretch="Fill"/>
+        <Label Content="Добавление специальности" FontSize="34" HorizontalAlignment="Left" Margin="308,35,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontFamily="Franklin Gothic Medium Cond" Height="51" Width="432" />
+        <TextBox HorizontalAlignment="Left" FontSize="22" Margin="256,148,0,0" TextWrapping="Wrap" x:Name="nameSpecTB" Text="{Binding nameSpec}" VerticalAlignment="Top" Width="536" Height="42"/>
+        <TextBox HorizontalAlignment="Left" FontSize="22" Margin="256,243,0,0" TextWrapping="Wrap" x:Name="numberSpecTB" Text="{Binding numberSpec}" VerticalAlignment="Top" Width="536" Height="42"/>
+        <TextBox HorizontalAlignment="Left" FontSize="22" Margin="256,322,0,0" TextWrapping="Wrap" x:Name="ratingSpecTB" Text="{Binding ratingSpec}" VerticalAlignment="Top" Width="536" Height="42"/>
+        <Label Content="Название специальности" FontSize="25" HorizontalAlignment="Left" Margin="256,109,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontFamily="Franklin Gothic Medium Cond" Height="34" Width="292" />
+        <Label Content="Номер специальности" FontSize="25" HorizontalAlignment="Left" Margin="256,204,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontFamily="Franklin Gothic Medium Cond" Height="34" Width="268" />
+        <Label Content="Рейтинг специальности" FontSize="25" HorizontalAlignment="Left" Margin="256,285,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontFamily="Franklin Gothic Medium Cond" Height="34" Width="268" />
+        <Button Content="Добавить"  FontFamily="Franklin Gothic Medium Cond" x:Name="SaveChSpec" Click="SaveChSpec_Click"  FontSize="30" Background="GhostWhite" HorizontalAlignment="Left" Margin="380,479,0,0" VerticalAlignment="Top" Height="53" Width="288" />
+
+    </Grid>
+</Window>

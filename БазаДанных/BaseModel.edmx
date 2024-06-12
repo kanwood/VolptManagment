@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище VoltptDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="idApplication" />
+          </Key>
+          <Property Name="idApplication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameA" Type="nvarchar" MaxLength="50" />
+          <Property Name="surnameA" Type="nvarchar" MaxLength="50" />
+          <Property Name="patronymicA" Type="nvarchar" MaxLength="50" />
+          <Property Name="phonenumber" Type="bigint" />
+          <Property Name="passport" Type="bigint" />
+          <Property Name="nameSpecial" Type="nvarchar" MaxLength="100" />
+          <Property Name="avgRating" Type="int" />
+          <Property Name="statusA" Type="nvarchar" MaxLength="50" />
+          <Property Name="idSpec" Type="int" />
+        </EntityType>
+        <EntityType Name="Exams">
+          <Key>
+            <PropertyRef Name="idExams" />
+          </Key>
+          <Property Name="idExams" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameE" Type="nvarchar" MaxLength="50" />
+          <Property Name="surnameE" Type="nvarchar" MaxLength="50" />
+          <Property Name="patronymicE" Type="nvarchar" MaxLength="50" />
+          <Property Name="schoolsubject" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateE" Type="datetime" />
+          <Property Name="idExamsOrg" Type="int" />
+        </EntityType>
+        <EntityType Name="ExamsOrg">
+          <Key>
+            <PropertyRef Name="idExamsOrg" />
+          </Key>
+          <Property Name="idExamsOrg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namesubject" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateEO" Type="datetime" />
+          <Property Name="place" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RatingsReceived">
+          <Key>
+            <PropertyRef Name="idRatingReceived" />
+          </Key>
+          <Property Name="idRatingReceived" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUser" Type="int" />
+          <Property Name="nameRR" Type="nvarchar" MaxLength="50" />
+          <Property Name="surnameRR" Type="nvarchar" MaxLength="50" />
+          <Property Name="patronymicRR" Type="nvarchar" MaxLength="50" />
+          <Property Name="nameSpecRR" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "VoltptDB.dbo.ResultExams" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ResultExams">
+          <Key>
+            <PropertyRef Name="idResultExams" />
+          </Key>
+          <Property Name="idResultExams" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameRE" Type="nvarchar" MaxLength="50" />
+          <Property Name="surnameRE" Type="nvarchar" MaxLength="50" />
+          <Property Name="patronymicRE" Type="nvarchar" MaxLength="50" />
+          <Property Name="Subjectschool" Type="nvarchar" MaxLength="50" />
+          <Property Name="avgRatingRE" Type="float" />
+          <Property Name="idExams" Type="int" />
+        </EntityType>
+        <EntityType Name="Specializations">
+          <Key>
+            <PropertyRef Name="idSpec" />
+          </Key>
+          <Property Name="idSpec" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameSpec" Type="nvarchar" MaxLength="100" />
+          <Property Name="numberSpec" Type="int" />
+          <Property Name="ratingSpec" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="surnameUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="patronymicUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="role" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Applications_Specializations">
+          <End Role="Specializations" Type="Self.Specializations" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specializations">
+              <PropertyRef Name="idSpec" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="idSpec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RatingsReceived_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RatingsReceived" Type="Self.RatingsReceived" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="RatingsReceived">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultExams_Exams">
+          <End Role="Exams" Type="Self.Exams" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ResultExams" Type="Self.ResultExams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exams">
+              <PropertyRef Name="idExams" />
+            </Principal>
+            <Dependent Role="ResultExams">
+              <PropertyRef Name="idExams" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище VoltptDBModelContainer">
+          <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exams" EntityType="Self.Exams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExamsOrg" EntityType="Self.ExamsOrg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RatingsReceived" EntityType="Self.RatingsReceived" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specializations" EntityType="Self.Specializations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResultExams" EntityType="Self.ResultExams" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ResultExams].[idResultExams] AS [idResultExams], 
+    [ResultExams].[nameRE] AS [nameRE], 
+    [ResultExams].[surnameRE] AS [surnameRE], 
+    [ResultExams].[patronymicRE] AS [patronymicRE], 
+    [ResultExams].[Subjectschool] AS [Subjectschool], 
+    [ResultExams].[avgRatingRE] AS [avgRatingRE], 
+    [ResultExams].[idExams] AS [idExams]
+    FROM [dbo].[ResultExams] AS [ResultExams]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Applications_Specializations" Association="Self.FK_Applications_Specializations">
+            <End Role="Specializations" EntitySet="Specializations" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatingsReceived_Users" Association="Self.FK_RatingsReceived_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RatingsReceived" EntitySet="RatingsReceived" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultExams_Exams" Association="Self.FK_ResultExams_Exams">
+            <End Role="Exams" EntitySet="Exams" />
+            <End Role="ResultExams" EntitySet="ResultExams" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VoltptDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="idApplication" />
+          </Key>
+          <Property Name="idApplication" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="surnameA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="patronymicA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phonenumber" Type="Int64" />
+          <Property Name="passport" Type="Int64" />
+          <Property Name="nameSpecial" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="avgRating" Type="Int32" />
+          <Property Name="statusA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idSpec" Type="Int32" />
+          <NavigationProperty Name="Specializations" Relationship="Self.FK_Applications_Specializations" FromRole="Applications" ToRole="Specializations" />
+        </EntityType>
+        <EntityType Name="Exams">
+          <Key>
+            <PropertyRef Name="idExams" />
+          </Key>
+          <Property Name="idExams" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="surnameE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="patronymicE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="schoolsubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateE" Type="DateTime" Precision="3" />
+          <Property Name="idExamsOrg" Type="Int32" />
+          <NavigationProperty Name="ResultExams" Relationship="Self.FK_ResultExams_Exams" FromRole="Exams" ToRole="ResultExams" />
+        </EntityType>
+        <EntityType Name="ExamsOrg">
+          <Key>
+            <PropertyRef Name="idExamsOrg" />
+          </Key>
+          <Property Name="idExamsOrg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="namesubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateEO" Type="DateTime" Precision="3" />
+          <Property Name="place" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RatingsReceived">
+          <Key>
+            <PropertyRef Name="idRatingReceived" />
+          </Key>
+          <Property Name="idRatingReceived" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUser" Type="Int32" />
+          <Property Name="nameRR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="surnameRR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="patronymicRR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nameSpecRR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_RatingsReceived_Users" FromRole="RatingsReceived" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Specializations">
+          <Key>
+            <PropertyRef Name="idSpec" />
+          </Key>
+          <Property Name="idSpec" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameSpec" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="numberSpec" Type="Int32" />
+          <Property Name="ratingSpec" Type="Int32" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_Specializations" FromRole="Specializations" ToRole="Applications" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="surnameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="patronymicUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="RatingsReceived" Relationship="Self.FK_RatingsReceived_Users" FromRole="Users" ToRole="RatingsReceived" />
+        </EntityType>
+        <EntityType Name="ResultExams">
+          <Key>
+            <PropertyRef Name="idResultExams" />
+          </Key>
+          <Property Name="idResultExams" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="surnameRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="patronymicRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Subjectschool" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="avgRatingRE" Type="Double" />
+          <Property Name="idExams" Type="Int32" />
+          <NavigationProperty Name="Exams" Relationship="Self.FK_ResultExams_Exams" FromRole="ResultExams" ToRole="Exams" />
+        </EntityType>
+        <Association Name="FK_Applications_Specializations">
+          <End Role="Specializations" Type="Self.Specializations" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specializations">
+              <PropertyRef Name="idSpec" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="idSpec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultExams_Exams">
+          <End Role="Exams" Type="Self.Exams" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ResultExams" Type="Self.ResultExams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exams">
+              <PropertyRef Name="idExams" />
+            </Principal>
+            <Dependent Role="ResultExams">
+              <PropertyRef Name="idExams" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RatingsReceived_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RatingsReceived" Type="Self.RatingsReceived" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="RatingsReceived">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VoltptDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Applications" EntityType="Self.Applications" />
+          <EntitySet Name="Exams" EntityType="Self.Exams" />
+          <EntitySet Name="ExamsOrg" EntityType="Self.ExamsOrg" />
+          <EntitySet Name="RatingsReceived" EntityType="Self.RatingsReceived" />
+          <EntitySet Name="Specializations" EntityType="Self.Specializations" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="ResultExams" EntityType="Self.ResultExams" />
+          <AssociationSet Name="FK_Applications_Specializations" Association="Self.FK_Applications_Specializations">
+            <End Role="Specializations" EntitySet="Specializations" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultExams_Exams" Association="Self.FK_ResultExams_Exams">
+            <End Role="Exams" EntitySet="Exams" />
+            <End Role="ResultExams" EntitySet="ResultExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatingsReceived_Users" Association="Self.FK_RatingsReceived_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RatingsReceived" EntitySet="RatingsReceived" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище VoltptDBModelContainer" CdmEntityContainer="VoltptDBEntities">
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="VoltptDBModel.Applications">
+              <MappingFragment StoreEntitySet="Applications">
+                <ScalarProperty Name="idApplication" ColumnName="idApplication" />
+                <ScalarProperty Name="nameA" ColumnName="nameA" />
+                <ScalarProperty Name="surnameA" ColumnName="surnameA" />
+                <ScalarProperty Name="patronymicA" ColumnName="patronymicA" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="passport" ColumnName="passport" />
+                <ScalarProperty Name="nameSpecial" ColumnName="nameSpecial" />
+                <ScalarProperty Name="avgRating" ColumnName="avgRating" />
+                <ScalarProperty Name="statusA" ColumnName="statusA" />
+                <ScalarProperty Name="idSpec" ColumnName="idSpec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exams">
+            <EntityTypeMapping TypeName="VoltptDBModel.Exams">
+              <MappingFragment StoreEntitySet="Exams">
+                <ScalarProperty Name="idExams" ColumnName="idExams" />
+                <ScalarProperty Name="nameE" ColumnName="nameE" />
+                <ScalarProperty Name="surnameE" ColumnName="surnameE" />
+                <ScalarProperty Name="patronymicE" ColumnName="patronymicE" />
+                <ScalarProperty Name="schoolsubject" ColumnName="schoolsubject" />
+                <ScalarProperty Name="dateE" ColumnName="dateE" />
+                <ScalarProperty Name="idExamsOrg" ColumnName="idExamsOrg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamsOrg">
+            <EntityTypeMapping TypeName="VoltptDBModel.ExamsOrg">
+              <MappingFragment StoreEntitySet="ExamsOrg">
+                <ScalarProperty Name="idExamsOrg" ColumnName="idExamsOrg" />
+                <ScalarProperty Name="namesubject" ColumnName="namesubject" />
+                <ScalarProperty Name="dateEO" ColumnName="dateEO" />
+                <ScalarProperty Name="place" ColumnName="place" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RatingsReceived">
+            <EntityTypeMapping TypeName="VoltptDBModel.RatingsReceived">
+              <MappingFragment StoreEntitySet="RatingsReceived">
+                <ScalarProperty Name="idRatingReceived" ColumnName="idRatingReceived" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="nameRR" ColumnName="nameRR" />
+                <ScalarProperty Name="surnameRR" ColumnName="surnameRR" />
+                <ScalarProperty Name="patronymicRR" ColumnName="patronymicRR" />
+                <ScalarProperty Name="nameSpecRR" ColumnName="nameSpecRR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specializations">
+            <EntityTypeMapping TypeName="VoltptDBModel.Specializations">
+              <MappingFragment StoreEntitySet="Specializations">
+                <ScalarProperty Name="idSpec" ColumnName="idSpec" />
+                <ScalarProperty Name="nameSpec" ColumnName="nameSpec" />
+                <ScalarProperty Name="numberSpec" ColumnName="numberSpec" />
+                <ScalarProperty Name="ratingSpec" ColumnName="ratingSpec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="VoltptDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="VoltptDBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="nameUser" ColumnName="nameUser" />
+                <ScalarProperty Name="surnameUser" ColumnName="surnameUser" />
+                <ScalarProperty Name="patronymicUser" ColumnName="patronymicUser" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResultExams">
+            <EntityTypeMapping TypeName="VoltptDBModel.ResultExams">
+              <MappingFragment StoreEntitySet="ResultExams">
+                <ScalarProperty Name="idResultExams" ColumnName="idResultExams" />
+                <ScalarProperty Name="nameRE" ColumnName="nameRE" />
+                <ScalarProperty Name="surnameRE" ColumnName="surnameRE" />
+                <ScalarProperty Name="patronymicRE" ColumnName="patronymicRE" />
+                <ScalarProperty Name="Subjectschool" ColumnName="Subjectschool" />
+                <ScalarProperty Name="avgRatingRE" ColumnName="avgRatingRE" />
+                <ScalarProperty Name="idExams" ColumnName="idExams" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,23 @@
+﻿<Window x:Class="VolptManagment.MenuAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VolptManagment"
+        mc:Ignorable="d"
+        Title="MenuAdmin" Height="600" Width="1000">
+    <Grid>
+        <Image Source="/Image1.png" Stretch="Fill"/>
+        <ListBox Margin="0,76,301,0" SelectionChanged="ListBox_SelectionChanged">
+            <ListBoxItem FontSize="30" FontFamily="Franklin Gothic Medium Cond" Height="50" Selected="Password_Selected">Просмотр паролей</ListBoxItem>
+            <ListBoxItem FontSize="30" FontFamily="Franklin Gothic Medium Cond" Height="50" Selected="PanelAbiturient_Selected">Панель управления абитуриентами</ListBoxItem>
+            <ListBoxItem FontSize="30" FontFamily="Franklin Gothic Medium Cond" Height="50" Selected="AbiturientExams_Selected">Список абитуриентов на вступительные экзамены</ListBoxItem>
+            <ListBoxItem FontSize="30" FontFamily="Franklin Gothic Medium Cond" Height="50" Selected="NewSpec_Selected">Добавление новой специальности</ListBoxItem>
+            <ListBoxItem FontSize="30" FontFamily="Franklin Gothic Medium Cond" Height="50" Selected="RatingSpec_Selected">Рейтинг специальностей</ListBoxItem>
+            <ListBoxItem FontSize="30" FontFamily="Franklin Gothic Medium Cond" Height="50" Selected="OutLobby_Selected">Вернуться назад</ListBoxItem>
+        </ListBox>
+        <Label Content="Выберите действие из списка:" Background="White" FontFamily="Franklin Gothic Medium Cond" FontSize="40" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="699" Height="66"/>
+        <Label Content="Администратор" FontFamily="Franklin Gothic Medium Cond" FontSize="30" HorizontalAlignment="Left" Margin="764,67,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="226" Height="42"/>
+        <Label Content="Ваш статус:" FontFamily="Franklin Gothic Medium Cond" FontSize="30" HorizontalAlignment="Left" Margin="785,17,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="168" Height="45"/>
+    </Grid>
+</Window>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e9f155af45514c8eabc0ed850abd32f8" Name="Diagram1">
+        <EntityTypeShape EntityType="VoltptDBModel.Applications" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VoltptDBModel.Exams" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VoltptDBModel.ExamsOrg" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VoltptDBModel.RatingsReceived" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VoltptDBModel.Specializations" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VoltptDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VoltptDBModel.Users" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VoltptDBModel.ResultExams" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="VoltptDBModel.FK_Applications_Specializations" ManuallyRouted="false" />
+        <AssociationConnector Association="VoltptDBModel.FK_ResultExams_Exams" ManuallyRouted="false" />
+        <AssociationConnector Association="VoltptDBModel.FK_RatingsReceived_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

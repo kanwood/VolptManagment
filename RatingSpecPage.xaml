@@ -1,0 +1,20 @@
+﻿<Window x:Class="VolptManagment.RatingSpecPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VolptManagment"
+        mc:Ignorable="d"
+        Title="RatingSpecPage" Height="600" Width="1000">
+    <Grid>
+        <Image Source="/Image1.png" Stretch="Fill"/>
+        <DataGrid Background="White" x:Name="DGRatingSpec" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,0,85">
+            <DataGrid.Columns>
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Специальность" Binding="{Binding nameSpec}" Width="*" />
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Номер специальности" Binding="{Binding numberSpec}" Width="*" />
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Рейтинг специальности" Binding="{Binding ratingSpec}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Вернуться"  FontFamily="Franklin Gothic Medium Cond" x:Name="MenuButton" Click="MenuButton_Click"  FontSize="30" Background="GhostWhite" HorizontalAlignment="Center" Margin="0,520,0,0" VerticalAlignment="Top" Height="54" Width="486" />
+    </Grid>
+</Window>

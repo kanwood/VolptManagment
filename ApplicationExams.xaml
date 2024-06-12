@@ -1,0 +1,36 @@
+﻿<Window x:Class="VolptManagment.ApplicationExams"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VolptManagment"
+        mc:Ignorable="d"
+        Title="ApplicationExams" Height="600" Width="1000">
+    <Grid>
+        <Image Source="/Image1.png" Stretch="Fill"/>
+        <Label Content="Онлайн заявка" FontSize="34" HorizontalAlignment="Left" Margin="179,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontFamily="Franklin Gothic Medium Cond" Height="50" Width="246" />
+        <TextBox HorizontalAlignment="Left" FontSize="22" Margin="34,60,0,0" TextWrapping="Wrap" Name="NameEAppTB" Text="{Binding nameE}" VerticalAlignment="Top" Width="536" Height="42"/>
+        <TextBox HorizontalAlignment="Left" FontSize="22" Margin="34,140,0,0" TextWrapping="Wrap" Name="SurnameEAppTB" Text="{Binding surnameE}" VerticalAlignment="Top" Width="536" Height="42"/>
+        <TextBox HorizontalAlignment="Left" FontSize="22" Margin="34,219,0,0" TextWrapping="Wrap" Name="PatronymicEAppTB" Text="{Binding patronymicE}" VerticalAlignment="Top" Width="536" Height="42"/>
+        <TextBox HorizontalAlignment="Left" FontSize="22" Margin="34,300,0,0" TextWrapping="Wrap" Name="SchoolSubcjectEAppTB" Text="{Binding schoolsubject}" VerticalAlignment="Top" Width="536" Height="42"/>
+        <TextBox HorizontalAlignment="Left" FontSize="22" Margin="34,378,0,0" TextWrapping="Wrap" Name="DateEAppTB" Text="{Binding dataE}" VerticalAlignment="Top" Width="536" Height="42"/>
+        <Label Content="Имя" FontSize="25" HorizontalAlignment="Left" Margin="34,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontFamily="Franklin Gothic Medium Cond" Height="34" Width="158" />
+        <Label Content="Фамилия" FontSize="25" HorizontalAlignment="Left" Margin="34,107,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontFamily="Franklin Gothic Medium Cond" Height="34" Width="158" />
+        <Label Content="Отчество" FontSize="25" HorizontalAlignment="Left" Margin="34,187,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontFamily="Franklin Gothic Medium Cond" Height="34" Width="158" />
+        <Label Content="Школьный предмет" FontSize="25" HorizontalAlignment="Left" Margin="34,267,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontFamily="Franklin Gothic Medium Cond" Height="34" Width="238" />
+        <Label Content="Дата проведения экзамена" FontSize="25" HorizontalAlignment="Left" Margin="34,342,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontFamily="Franklin Gothic Medium Cond" Height="36" Width="324" />
+        <Button Content="Оставить заявку"  FontFamily="Franklin Gothic Medium Cond" x:Name="SaveChApplicationExams" Click="SaveChApplicationExams_Click"  FontSize="30" Background="GhostWhite" HorizontalAlignment="Center" Margin="0,492,0,0" VerticalAlignment="Top" Height="54" Width="288" />
+        <DataGrid Background="White" x:Name="DGExamsSubject" AutoGenerateColumns="False" IsReadOnly="True" Margin="594,60,0,380">
+            <DataGrid.Columns>
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Школьные предметы" Binding="{Binding namesubject}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Список шк. предметов" FontSize="34" HorizontalAlignment="Left" Margin="624,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontFamily="Franklin Gothic Medium Cond" Height="50" Width="346" />
+        <DataGrid Background="White" x:Name="DGExamstime" AutoGenerateColumns="False" IsReadOnly="True" Margin="594,283,0,146">
+            <DataGrid.Columns>
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Дата" Binding="{Binding dateEO}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Время проведения" FontSize="34" HorizontalAlignment="Left" Margin="646,231,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" FontFamily="Franklin Gothic Medium Cond" Height="50" Width="302" />
+    </Grid>
+</Window>

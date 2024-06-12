@@ -1,0 +1,23 @@
+﻿<Window x:Class="VolptManagment.SpisokAbitRedact"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VolptManagment"
+        mc:Ignorable="d"
+        Title="SpisokAbitRedact" Height="600" Width="1000">
+    <Grid>
+        <DataGrid Background="White" x:Name="DGExamsAb" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,0,104">
+            <DataGrid.Columns>
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Фамилия" Binding="{Binding surnameE}" Width="*" />
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Имя" Binding="{Binding nameE}" Width="*"/>
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Отчество" Binding="{Binding patronymicE}" Width="*" />
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Школьный предмет" Binding="{Binding schoolsubject}" Width="*" />
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Дата" Binding="{Binding dateE}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Вернуться" x:Name="Outt" Click="OutClick" FontSize="30" Background="GhostWhite" FontFamily="Franklin Gothic Medium Cond" HorizontalAlignment="Left" Margin="701,509,0,0" VerticalAlignment="Top" Height="40" Width="273" />
+        <Button Content="Добавление" x:Name="AddButton" Click="AddButton_Click" FontSize="30" Background="GhostWhite" FontFamily="Franklin Gothic Medium Cond" HorizontalAlignment="Left" Margin="10,509,0,0" VerticalAlignment="Top" Height="40" Width="238" />
+        <Button Content="Удаление" x:Name="RemoveButton" Click="RemoveButton_Click" FontSize="30" Background="GhostWhite" FontFamily="Franklin Gothic Medium Cond" HorizontalAlignment="Left" Margin="262,509,0,0" VerticalAlignment="Top" Height="40" Width="238" />
+    </Grid>
+</Window>

@@ -1,0 +1,21 @@
+﻿<Window x:Class="VolptManagment.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VolptManagment"
+        mc:Ignorable="d"
+        Title="Menu" Height="600" Width="1000">
+    <Grid>
+        <Image Source="/Image1.png" Stretch="Fill"/>
+        <ListBox Margin="0,76,391,0">
+            <ListBoxItem FontSize="30" FontFamily="Franklin Gothic Medium Cond" Height="50" Selected="Special_Selected">Подать заявку на специальность</ListBoxItem>
+            <ListBoxItem FontSize="30" FontFamily="Franklin Gothic Medium Cond" Height="50" Selected="Exam_Selected">Подать заявку на вступительные экзамены</ListBoxItem>
+            <ListBoxItem FontSize="30" FontFamily="Franklin Gothic Medium Cond" Height="50" Selected="Rating_Selected">Рейтинг специальностей</ListBoxItem>
+            <ListBoxItem FontSize="30" FontFamily="Franklin Gothic Medium Cond" Height="50" Selected="OutBack_Selected">Вернуться назад</ListBoxItem>
+        </ListBox>
+        <Label Content="Выберите действие из списка:" Background="White" FontFamily="Franklin Gothic Medium Cond" FontSize="40" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="592" Height="66"/>
+        <Label Content="Абитуриент" FontFamily="Franklin Gothic Medium Cond" FontSize="30" HorizontalAlignment="Left" Margin="796,76,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="167" Height="48"/>
+        <Label Content="Ваш статус:" FontFamily="Franklin Gothic Medium Cond" FontSize="30" HorizontalAlignment="Left" Margin="800,21,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="159" Height="44"/>
+    </Grid>
+</Window>

@@ -1,0 +1,31 @@
+﻿<Window x:Class="VolptManagment.CheckDocuments"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VolptManagment"
+        mc:Ignorable="d"
+        Title="CheckDocuments" Height="600" Width="1000">
+    <Grid>
+        <DataGrid Background="White" x:Name="DGCheckDocuments" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,0,100">
+            <DataGrid.Columns>
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Фамилия" Binding="{Binding surnameA}" Width="*" />
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Имя" Binding="{Binding nameA}" Width="*"/>
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Отчество" Binding="{Binding patronymicA}" Width="*" />
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Паспорт" Binding="{Binding passport}" Width="*" />
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Номер телефона" Binding="{Binding phonenumber}" Width="*" />
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Специальность" Binding="{Binding nameSpecial}" Width="*" />
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Средняя оценка" Binding="{Binding avgRating}" Width="*" />
+                <DataGridTextColumn FontFamily="Franklin Gothic Medium Cond" FontSize="16" Header="Статус" Binding="{Binding statusA}" Width="*" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать статус" FontSize="16" Name="EditStatus" Click="EditStatus_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Вернуться" x:Name="SpecialButton1" Click="SpecialButton1_Click" FontSize="30" Background="GhostWhite" FontFamily="Franklin Gothic Medium Cond" HorizontalAlignment="Left" Margin="700,519,0,0" VerticalAlignment="Top" Height="40" Width="273" />
+    </Grid>
+</Window>
