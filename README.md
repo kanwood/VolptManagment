@@ -66,7 +66,7 @@
 ![Окно добавления специальности](https://github.com/kanwood/VolptManagment/blob/main/ScreensForRepository/7.png)
 # Окно добавления специальности </br>
 
-# Скриншоты приложения:
+# Видеообзор приложения:
 
 ![Видеообзор приложения часть 1](https://github.com/kanwood/VolptManagment/blob/main/ScreensForRepository/video1.mp4)
 # Видеообзор приложения часть 1
